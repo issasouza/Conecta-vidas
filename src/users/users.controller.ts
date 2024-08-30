@@ -25,21 +25,29 @@ export class UsersController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Lista todos os usuários' })
+  @ApiResponse({ status: 200, description: 'Lista de usuários retornada com sucesso.', type: [User] })
   findAll() {
     return this.usersService.findAll();
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Lista um usuário' })
+  @ApiResponse({ status: 200, description: 'Usuário retornado com sucesso.', type: [User] })
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Atualiza um usuário' })
+  @ApiResponse({ status: 200, description: 'Usuário atualizado com sucesso.', type: [User] })
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Remove um usuario' })
+  @ApiResponse({ status: 200, description: 'Usuário removido com sucesso.', type: [User] })
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);
   }

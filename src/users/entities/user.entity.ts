@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Mensagem } from 'src/mensagem/entities/mensagem.entity';
 import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToMany } from 'typeorm';
 
@@ -6,15 +7,19 @@ import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToMany } from 't
 export class User {
 
     @PrimaryGeneratedColumn("uuid")
+    @ApiProperty({ description: 'ID único do usuário' })
     id: string
 
     @Column()
+    @ApiProperty({ description: 'Nome do usuário' })
     name:string
 
     @Column({unique:true})
+    @ApiProperty({ description: 'Email do usuário' })
     email: string;
     
     @Column()
+    @ApiProperty({ description: 'Senha do usuário' })
     password: string;
 
     @OneToMany(()=>Mensagem,(mens)=> mens.user)

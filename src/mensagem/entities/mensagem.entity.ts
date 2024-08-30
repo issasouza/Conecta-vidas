@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { User } from 'src/users/entities/user.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from 'typeorm';
 
@@ -5,19 +6,24 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn
 export class Mensagem {
 
     @PrimaryGeneratedColumn("uuid")
+    @ApiProperty({ description: 'ID único da postagem' })
     id: string
 
     @Column()
+    @ApiProperty({ description: 'Titulo da postagem' })
     titulo: string;
 
     @Column()
+    @ApiProperty({ description: 'Conteudo da postagem' })
     Conteudo: string;
 
     @Column('date')
+    @ApiProperty({ description: 'data da postagem' })
     data: Date;
 
     @OneToOne(() => User)
     @JoinColumn({ name: 'name' })
+    @ApiProperty({ description: 'Usuario da postagem' })
     user: User;
 
     constructor(
