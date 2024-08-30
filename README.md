@@ -34,6 +34,7 @@ Criar um espaço de apoio mútuo onde ninguém se sinta sozinho em sua luta. Jun
 
 - `npm run start`
 
+
 ## Funcionalidades
 
 - **Cadastro de Usuários:** Os usuários podem se cadastrar fornecendo nome, e-mail e senha para acessar o aplicativo.

@@ -3,12 +3,17 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
+  @ApiOperation({ summary: 'Cria um novo usuário' }) 
+  @ApiResponse({ status: 201, description: 'O usuário foi criado com sucesso.', type: User }) 
+  @ApiResponse({ status: 400, description: 'Dados inválidos.' }) 
   create(@Body() createUserDto: CreateUserDto) {
   const user = new User(
     createUserDto.name,
