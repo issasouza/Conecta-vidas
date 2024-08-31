@@ -22,8 +22,9 @@ export class Mensagem {
     data: Date;
 
     @OneToOne(() => User)
-    @JoinColumn({ name: 'name' })
+    @JoinColumn({ name: 'name_id' })
     @ApiProperty({ description: 'Usuario da postagem' })
+    @ApiProperty({ type: () => User })
     user: User;
 
     constructor(

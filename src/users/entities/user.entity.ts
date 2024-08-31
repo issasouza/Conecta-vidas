@@ -24,6 +24,8 @@ export class User {
 
     @OneToMany(()=>Mensagem,(mens)=> mens.user)
     @JoinColumn()
+    @ApiProperty({ description: 'mensagem' })
+    @ApiProperty({ type: () => Mensagem })
     public mensagem: Mensagem[]
 
     constructor(
