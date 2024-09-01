@@ -22,11 +22,12 @@ export class User {
     @ApiProperty({ description: 'Senha do usuário' })
     password: string;
 
-    @OneToMany(()=>Mensagem,(mens)=> mens.user)
+    @OneToMany(()=>Mensagem,(mens)=> mens.user,{cascade: true})
     @JoinColumn()
     @ApiProperty({ description: 'mensagem' })
     @ApiProperty({ type: () => Mensagem })
-    public mensagem: Mensagem[]
+    public mensagem: Promise<Mensagem[]>
+
 
     constructor(
         name:string,
