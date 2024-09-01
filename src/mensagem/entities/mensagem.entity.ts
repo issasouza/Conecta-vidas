@@ -21,7 +21,7 @@ export class Mensagem {
     @ApiProperty({ description: 'data da postagem' })
     data: Date;
 
-    @OneToOne(() => User)
+    @OneToOne(() => User, user => user.mensagem,{onDelete:'CASCADE'})
     @JoinColumn({ name: 'name_id' })
     @ApiProperty({ description: 'Usuario da postagem' })
     @ApiProperty({ type: () => User })
